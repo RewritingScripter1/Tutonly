@@ -507,55 +507,8 @@ Script.LookAt = function(Target)
             local TargetVel = Script.CalculateVelocity(Target)
             local PredictedPos = TargetPos
             
-            if getgenv().AutoPred == true then
-        pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-        split = string.split(pingvalue, "(")
-        ping = tonumber(split[1])
-        if ping < 225 then
-            getgenv().Prediction = 1.4
-        elseif ping < 215 then
-            getgenv().Prediction = 0.24
-        elseif ping < 205 then
-            getgenv().Prediction = 0.209
-        elseif ping < 190 then
-            getgenv().Prediction = 0.18474
-        elseif ping < 180 then
-            getgenv().Prediction = 0.177
-        elseif ping < 170 then
-            getgenv().Prediction = 0.174
-        elseif ping < 160 then
-            getgenv().Prediction = 0.17
-        elseif ping < 150 then
-            getgenv().Prediction = 0.165
-        elseif ping < 140 then
-            getgenv().Prediction = 0.165
-        elseif ping < 130 then
-            getgenv().Prediction = 0.165
-        elseif ping < 120 then
-            getgenv().Prediction = 0.155
-        elseif ping < 110 then
-            getgenv().Prediction = 0.155
-        elseif ping < 105 then
-            getgenv().Prediction = 0.149533
-        elseif ping < 90 then
-            getgenv().Prediction = 0.146373
-        elseif ping < 80 then
-            getgenv().Prediction = 0.14211
-        elseif ping < 70 then
-            getgenv().Prediction = 0.136354
-        elseif ping < 60 then
-            getgenv().Prediction = 0.1343
-        elseif ping < 50 then
-            getgenv().Prediction = 0.12846
-        elseif ping < 40 then
-            getgenv().Prediction = 0.126
-        elseif ping < 30 then
-            getgenv().Prediction = 0.12
-        elseif ping < 20 then
-            getgenv().Prediction = 0.11
-        end
-    end
- else
+            if getgenv().FraudLiar['Auto Prediction'] then
+                local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
                 getgenv().FraudLiar['Prediction']['Amount'] = 0.1 + (ping / 2500) * 0.88
             end
             
